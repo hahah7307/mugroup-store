@@ -6,8 +6,7 @@
     .layui-form-label {width: 100px!important;}
     .layui-form-item .layui-inline {margin-right: 0!important;}
     .layui-form-label {width: 160px!important;}
-    .invisible {visibility: hidden}
-    .w90 {width: 90px!important;}
+    .w84 {width: 84px!important;}
     .deliver_num {width: 100px!important;}
     .layui-table {width: 50%; display: inline}
 </style>
@@ -17,7 +16,7 @@
     <div class="title">库存预算</div>
     <div class="layui-form">
         <div class="layui-form-item">
-            <div class="layui-inline layui-col-md3">
+            <div class="layui-inline layui-col-md4">
                 <label class="layui-form-label">查询日期</label>
                 <div class="layui-input-inline">
                     <input type="text" autocomplete="off" class="layui-input datetime w300" name="query_date" value="{$query_date}">
@@ -25,13 +24,13 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <div class="layui-inline layui-col-md3">
+            <div class="layui-inline layui-col-md4">
                 <label class="layui-form-label">产品名称<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" autocomplete="off" class="layui-input w300" name="product_name" value="{$info.product_name}">
                 </div>
             </div>
-            <div class="layui-inline layui-col-md3">
+            <div class="layui-inline layui-col-md4">
                 <label class="layui-form-label">产品SKU<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" autocomplete="off" class="layui-input w300" name="product_sku" value="{$info.product_sku}">
@@ -48,7 +47,7 @@
             </div>
             <div class="layui-inline layui-col-md1">
                 <div class="layui-input-inline deliver_num">
-                    <input type="text" class="layui-input w90" name="sale[]" placeholder="销量">
+                    <input type="text" class="layui-input w84" name="sale[]" placeholder="销量">
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="saleAdd">添加</button>
@@ -66,7 +65,7 @@
             </div>
             <div class="layui-inline layui-col-md1">
                 <div class="layui-input-inline deliver_num">
-                    <input type="text" class="layui-input w90" name="sale[]" placeholder="销量" value="{$sale_data}">
+                    <input type="text" class="layui-input w84" name="sale[]" placeholder="销量" value="{$sale_data}">
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="saleAdd">添加</button>
@@ -81,7 +80,7 @@
             </div>
             <div class="layui-inline layui-col-md1">
                 <div class="layui-input-inline deliver_num">
-                    <input type="text" class="layui-input w90" name="sale[{$i}]" placeholder="销量" value="{$sale_data}">
+                    <input type="text" class="layui-input w84" name="sale[{$i}]" placeholder="销量" value="{$sale_data}">
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button>
@@ -92,7 +91,7 @@
         {/if}
         <div class="title" id="america-west">美国西部</div>
         <div class="layui-form-item">
-            <div class="layui-inline layui-col-md3">
+            <div class="layui-inline layui-col-md4">
                 <label class="layui-form-label">基础库存<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" autocomplete="off" class="layui-input w300" name="w_basic_store" value="{$info.post_data.w_info.basic_store}">
@@ -109,7 +108,7 @@
             </div>
             <div class="layui-inline layui-col-md1">
                 <div class="layui-input-inline deliver_num">
-                    <input type="text" class="layui-input w90" name="w_deliver_num[]" placeholder="发货量">
+                    <input type="text" class="layui-input w84" name="w_deliver_num[]" placeholder="发货量">
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="wDeliverAdd">添加</button>
@@ -127,7 +126,7 @@
             </div>
             <div class="layui-inline layui-col-md1">
                 <div class="layui-input-inline deliver_num">
-                    <input type="text" class="layui-input w90" name="w_deliver_num[]" placeholder="发货量" value="{$deliver}">
+                    <input type="text" class="layui-input w84" name="w_deliver_num[]" placeholder="发货量" value="{$deliver}">
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="wDeliverAdd">添加</button>
@@ -142,7 +141,7 @@
             </div>
             <div class="layui-inline layui-col-md1">
                 <div class="layui-input-inline deliver_num">
-                    <input type="text" class="layui-input w90" name="w_deliver_num[{$j}]" placeholder="发货量" value="{$deliver}">
+                    <input type="text" class="layui-input w84" name="w_deliver_num[{$j}]" placeholder="发货量" value="{$deliver}">
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button>
@@ -153,7 +152,7 @@
         {/if}
         <div class="title" id="america-east">美国东部</div>
         <div class="layui-form-item">
-            <div class="layui-inline layui-col-md3">
+            <div class="layui-inline layui-col-md4">
                 <label class="layui-form-label">基础库存<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" autocomplete="off" class="layui-input w300" name="e_basic_store" value="{$info.post_data.e_info.basic_store}">
@@ -170,7 +169,7 @@
             </div>
             <div class="layui-inline layui-col-md1">
                 <div class="layui-input-inline deliver_num">
-                    <input type="text" class="layui-input w90" name="e_deliver_num[]" placeholder="发货量">
+                    <input type="text" class="layui-input w84" name="e_deliver_num[]" placeholder="发货量">
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="eDeliverAdd">添加</button>
@@ -188,7 +187,7 @@
             </div>
             <div class="layui-inline layui-col-md1">
                 <div class="layui-input-inline deliver_num">
-                    <input type="text" class="layui-input w90" name="e_deliver_num[]" placeholder="发货量" value="{$deliver}">
+                    <input type="text" class="layui-input w84" name="e_deliver_num[]" placeholder="发货量" value="{$deliver}">
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="eDeliverAdd">添加</button>
@@ -203,7 +202,7 @@
             </div>
             <div class="layui-inline layui-col-md1">
                 <div class="layui-input-inline deliver_num">
-                    <input type="text" class="layui-input w90" name="e_deliver_num[{$k}]" placeholder="发货量" value="{$deliver}">
+                    <input type="text" class="layui-input w84" name="e_deliver_num[{$k}]" placeholder="发货量" value="{$deliver}">
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button>
@@ -214,7 +213,7 @@
         {/if}
         <div class="layui-form-item tl" id="btn-submit">
             <div class="layui-input-block">
-                <button class="layui-btn w200 button" lay-submit lay-filter="formCoding">提交</button>
+                <button class="layui-btn w200 button" lay-submit lay-filter="formCoding" style="margin-right: 80px!important;">提交</button>
                 <a href="{:url('add')}" class="layui-btn layui-btn-normal w200">重置</a>
             </div>
         </div>
@@ -290,7 +289,7 @@
         form.on('submit(saleAdd)', function(data) {
             saleIndex ++;
             var new_attr =
-                '<div class="layui-form-item" id="sale-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input" name="month[' + saleIndex + ']" placeholder="月份"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w90" name="sale[' + saleIndex + ']" placeholder="销量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button></div>';
+                '<div class="layui-form-item" id="sale-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input" name="month[' + saleIndex + ']" placeholder="月份"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w84" name="sale[' + saleIndex + ']" placeholder="销量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button></div>';
             $("#america-west").before(new_attr);
             form.render();
             timeAdd();
@@ -300,7 +299,7 @@
         let wDeliverIndex = {$info.post_data.w_info.deliver|count} ? {$info.post_data.w_info.deliver|count} - 1 : 0;
         form.on('submit(wDeliverAdd)', function(data) {
             wDeliverIndex ++;
-            var new_attr = '<div class="layui-form-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input datetime" name="w_deliver_date[' + wDeliverIndex + ']" placeholder="日期"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w90" name="w_deliver_num[' + wDeliverIndex + ']" placeholder="发货量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button></div></div>';
+            var new_attr = '<div class="layui-form-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input datetime" name="w_deliver_date[' + wDeliverIndex + ']" placeholder="日期"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w84" name="w_deliver_num[' + wDeliverIndex + ']" placeholder="发货量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button></div></div>';
             $("#america-east").before(new_attr);
             form.render();
             timeAdd();
@@ -310,7 +309,7 @@
         let eDeliverIndex = {$info.post_data.e_info.deliver|count} ? {$info.post_data.e_info.deliver|count} - 1 : 0;
         form.on('submit(eDeliverAdd)', function(data) {
             eDeliverIndex ++;
-            var new_attr = '<div class="layui-form-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input datetime" name="e_deliver_date[' + eDeliverIndex + ']" placeholder="日期"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w90" name="e_deliver_num[' + eDeliverIndex + ']" placeholder="发货量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button></div></div>';
+            var new_attr = '<div class="layui-form-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input datetime" name="e_deliver_date[' + eDeliverIndex + ']" placeholder="日期"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w84" name="e_deliver_num[' + eDeliverIndex + ']" placeholder="发货量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button></div></div>';
             $("#btn-submit").before(new_attr);
             form.render();
             timeAdd();

@@ -75,7 +75,8 @@ class StoreController extends BaseController
             $info['post_data'] = json_decode($info['post_data'], true);
             $info['store_data'] = json_decode($info['store_data'], true);
             $this->assign('info', $info);
-            $query_date_format = !empty($id) ? date('Y-m-d',strtotime($info['query_date'])) : '';
+
+            $query_date_format = !empty($id) ? date('Y-m-d',strtotime($info['query_date'])) : date('Y-m-d');
             $this->assign('query_date', $query_date_format);
 
             return view();
