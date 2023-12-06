@@ -4,7 +4,7 @@
 <!-- 主体内容 -->
 <div class="layui-body" id="LAY_app_body">
     <div class="right">
-        <div class="title">库存预算</div>
+        <div class="title">返单测算</div>
 <!--        <form class="layui-form search-form" method="get">-->
 <!--            <div class="layui-inline w80">-->
 <!--                <select name="sort">-->
@@ -40,6 +40,7 @@
                     <col>
                     <col>
                     <col>
+                    <col>
                     <col width="150">
                 </colgroup>
                 <thead>
@@ -49,7 +50,8 @@
                     </th>
                     <th class="tc">产品名称</th>
                     <th class="tc">产品SKU</th>
-                    <th class="tc">查询日期</th>
+                    <th class="tc">测算日期</th>
+                    <th class="tc">出单比例</th>
                     <th class="tc">操作</th>
                 </tr>
                 </thead>
@@ -63,7 +65,8 @@
                     </td>
                     <td class="tc">{$v.product_name}</td>
                     <td class="tc">{$v.product_sku}</td>
-                    <td class="tc">{$v.query_date}</td>
+                    <td class="tc">{:date("Y-m-d", strtotime($v['query_date']))}</td>
+                    <td class="tc">美西{$v.w_sale_proportion * 100}% 美东{$v.w_sale_proportion * 100 - 100|abs}%</td>
                     <td class="tc">
                         <a href="{:url('info', ['id' => $v.id])}" class="layui-btn layui-btn-sm">详情</a>
                         <button data-id="{$v.id}" class="layui-btn layui-btn-sm layui-btn-danger ml0" lay-submit lay-filter="Detele">删除</button>

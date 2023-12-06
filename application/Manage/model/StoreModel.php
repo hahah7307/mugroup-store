@@ -32,6 +32,7 @@ class StoreModel extends Model
         $arr['query_date'] = $post['query_date'];
         $arr['product_name'] = $post['product_name'];
         $arr['product_sku'] = $post['product_sku'];
+        $arr['w_sale_proportion'] = $post['w_sale_proportion'];
         $arr['sale_info'] = array_combine($post['month'], $post['sale']);
         $arr['w_info'] = [
             'basic_store'   =>  $post['w_basic_store'],
@@ -66,7 +67,7 @@ class StoreModel extends Model
             $e_new_store = isset($formatPostData['e_info']['deliver'][$e_deliver_date_format]) ? $formatPostData['e_info']['deliver'][$e_deliver_date_format] : 0;
 
             // 计算两地销量
-            $w_sale = floor($sale * Config::get('W_SALE_PROPORTION'));
+            $w_sale = floor($sale * $formatPostData['w_sale_proportion']);
             $e_sale = $sale - $w_sale;
             if ($data['w'][$ymd] + $w_new_store < $w_sale) {
                 $w_sale = $data['w'][$ymd] + $w_new_store;

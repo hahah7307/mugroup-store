@@ -51,12 +51,13 @@ class StoreController extends BaseController
             $post = StoreModel::formatPostData($post);
             $data = StoreModel::getStoreData($post);
             $storeData = [
-                'query_date'        =>  $post['query_date'],
-                'product_name'      =>  $post['product_name'],
-                'product_sku'       =>  $post['product_sku'],
-                'sale_data'         =>  json_encode($post['sale_info']),
-                'post_data'         =>  json_encode($post),
-                'store_data'        =>  json_encode($data)
+                'query_date'            =>  $post['query_date'],
+                'product_name'          =>  $post['product_name'],
+                'product_sku'           =>  $post['product_sku'],
+                'w_sale_proportion'     =>  $post['w_sale_proportion'],
+                'sale_data'             =>  json_encode($post['sale_info']),
+                'post_data'             =>  json_encode($post),
+                'store_data'            =>  json_encode($data)
             ];
             $model = new StoreModel();
             if ($model->allowField(true)->save($storeData)) {

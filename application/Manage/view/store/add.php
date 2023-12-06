@@ -9,15 +9,16 @@
     .w84 {width: 84px!important;}
     .deliver_num {width: 100px!important;}
     .layui-table {width: 50%; display: inline}
+    .select {margin-left: 0!important;}
 </style>
 <div class="layui-body">
 <div class="right">
     <a href="{:session('manage.back_url')}" class="layui-btn layui-btn-danger layui-btn-sm fr"><i class="layui-icon">&#xe603;</i>返回上一页</a>
-    <div class="title">库存预算</div>
+    <div class="title">返单测算</div>
     <div class="layui-form">
         <div class="layui-form-item">
             <div class="layui-inline layui-col-md4">
-                <label class="layui-form-label">查询日期</label>
+                <label class="layui-form-label">测算日期</label>
                 <div class="layui-input-inline">
                     <input type="text" autocomplete="off" class="layui-input datetime w300" name="query_date" value="{$query_date}">
                 </div>
@@ -37,12 +38,26 @@
                 </div>
             </div>
         </div>
+        <div class="layui-form-item">
+            <div class="layui-inline layui-col-md6">
+                <label class="layui-form-label">美西美东出单比例<span class="red">*</span></label>
+                <div class="layui-input-block layui-col-md4 select">
+                    <select name="w_sale_proportion" lay-verify="">
+                        <option value=""></option>
+                        <option value="0.2" {if condition="$info.w_sale_proportion eq '0.2'"}selected{/if}>美西20% 美东80%</option>
+                        <option value="0.3" {if condition="$info.w_sale_proportion eq '0.3'"}selected{/if}>美西30% 美东70%</option>
+                        <option value="0.4" {if condition="$info.w_sale_proportion eq '0.4'"}selected{/if}>美西40% 美东60%</option>
+                        <option value="0.5" {if condition="$info.w_sale_proportion eq '0.5'"}selected{/if}>美西50% 美东50%</option>
+                    </select>
+                </div>
+            </div>
+        </div>
         {if condition="$id eq 0"}
         <div class="layui-form-item" id="sale-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">销量预估<span class="red">*</span></label>
+                <label class="layui-form-label">日销量预估<span class="red">*</span></label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input" name="month[]" placeholder="月份">
+                    <input type="text" class="layui-input" name="month[]" placeholder="年月(如:202401)">
                 </div>
             </div>
             <div class="layui-inline layui-col-md1">
@@ -58,7 +73,7 @@
         {if condition="$i eq 0"}
         <div class="layui-form-item" id="sale-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">销量预估<span class="red">*</span></label>
+                <label class="layui-form-label">日销量预估<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input" name="month[]" placeholder="月份" value="{$key}">
                 </div>
@@ -92,7 +107,7 @@
         <div class="title" id="america-west">美国西部</div>
         <div class="layui-form-item">
             <div class="layui-inline layui-col-md4">
-                <label class="layui-form-label">基础库存<span class="red">*</span></label>
+                <label class="layui-form-label">当前库存<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" autocomplete="off" class="layui-input w300" name="w_basic_store" value="{$info.post_data.w_info.basic_store}">
                 </div>
@@ -101,7 +116,7 @@
         {if condition="$id eq 0"}
         <div class="layui-form-item" id="w-deliver-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">发货详情<span class="red">*</span></label>
+                <label class="layui-form-label">在途详情(预计到港日期)<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input datetime" name="w_deliver_date[]" placeholder="日期">
                 </div>
@@ -119,7 +134,7 @@
         {if condition="$j eq 0"}
         <div class="layui-form-item" id="w-deliver-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">发货详情<span class="red">*</span></label>
+                <label class="layui-form-label">在途详情(预计到港日期)<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input datetime" name="w_deliver_date[]" placeholder="日期" value="{$jk}">
                 </div>
@@ -153,7 +168,7 @@
         <div class="title" id="america-east">美国东部</div>
         <div class="layui-form-item">
             <div class="layui-inline layui-col-md4">
-                <label class="layui-form-label">基础库存<span class="red">*</span></label>
+                <label class="layui-form-label">当前库存<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" autocomplete="off" class="layui-input w300" name="e_basic_store" value="{$info.post_data.e_info.basic_store}">
                 </div>
@@ -162,7 +177,7 @@
         {if condition="$id eq 0"}
         <div class="layui-form-item" id="e-deliver-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">发货详情<span class="red">*</span></label>
+                <label class="layui-form-label">在途详情(预计到港日期)<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input datetime" name="e_deliver_date[]" placeholder="日期">
                 </div>
@@ -180,7 +195,7 @@
         {if condition="$k eq 0"}
         <div class="layui-form-item" id="e-deliver-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">发货详情<span class="red">*</span></label>
+                <label class="layui-form-label">在途详情(预计到港日期)<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input datetime" name="e_deliver_date[]" placeholder="日期" value="{$kk}">
                 </div>
@@ -246,7 +261,7 @@
         </colgroup>
         <thead>
         <tr>
-            <th colspan="2" class="tc">美国西部</th>
+            <th colspan="2" class="tc">美国东部</th>
         </tr>
         </thead>
         <tbody>

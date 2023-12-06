@@ -16,10 +16,10 @@
                 <li data-name="Member" class="layui-nav-item">
                     <a layui-href="javascript:;" lay-tips="核价" lay-direction="2">
                         <i class="layui-icon iconfont icon-xunpan"></i>
-                        <cite>库存</cite>
+                        <cite>返单测算</cite>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a layui-href="{:url('Store/index')}">库存预算</a></dd>
+                        <dd><a layui-href="{:url('Store/index')}">返单测算</a></dd>
                     </dl>
                 </li>
                 <li data-name="Site" class="layui-nav-item">
