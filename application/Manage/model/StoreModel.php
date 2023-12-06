@@ -48,19 +48,35 @@ class StoreModel extends Model
     static public function getStoreData($formatPostData, $data = [])
     {
         if (!empty($data)) {
+            // 获取上一天的时间
             $array = array_keys($data['w']);
             $ymd = end($array);
-            $ym = date('Ym', strtotime($ymd));
+
+            // 当日时间
+            $current_date = date('Ymd', strtotime($ymd) + 24 * 60 * 60);
+
+            // 销量
+            $ym = date('Ym', strtotime($current_date));
             $sale = $formatPostData['sale_info'][$ym];
+
+            // 获取当天到货数
+            $w_deliver_date_format = date('Y-m-d', strtotime($current_date) - 24 * 60 * 60 * Config::get('W_TRANSPORT_DAY'));
+            $e_deliver_date_format = date('Y-m-d', strtotime($current_date) - 24 * 60 * 60 * Config::get('E_TRANSPORT_DAY'));
+            $w_new_store = isset($formatPostData['w_info']['deliver'][$w_deliver_date_format]) ? $formatPostData['w_info']['deliver'][$w_deliver_date_format] : 0;
+            $e_new_store = isset($formatPostData['e_info']['deliver'][$e_deliver_date_format]) ? $formatPostData['e_info']['deliver'][$e_deliver_date_format] : 0;
+
+            // 计算两地销量
             $w_sale = floor($sale * Config::get('W_SALE_PROPORTION'));
             $e_sale = $sale - $w_sale;
+            if ($data['w'][$ymd] + $w_new_store < $w_sale) {
+                $w_sale = $data['w'][$ymd] + $w_new_store;
+                $e_sale = min($data['e'][$ymd] + $e_new_store, $sale - $w_sale);
+            } elseif ($data['e'][$ymd] + $e_new_store < $e_sale) {
+                $e_sale = $data['e'][$ymd] + $e_new_store;
+                $w_sale = min($data['w'][$ymd] + $w_new_store, $sale - $e_sale);
+            }
 
-            $current_date = date('Ymd', strtotime($ymd) + 24 * 60 * 60);
-            $current_date_format = date('Y-m-d', strtotime($ymd) + 24 * 60 * 60);
-            $w_new_store = isset($formatPostData['w_info']['deliver'][$current_date_format]) ? $formatPostData['w_info']['deliver'][$current_date_format] : 0;
-            $e_new_store = isset($formatPostData['e_info']['deliver'][$current_date_format]) ? $formatPostData['e_info']['deliver'][$current_date_format] : 0;
-
-            // 整理返回数据
+            // 计算两地剩余库存
             $w_store = max($data['w'][$ymd] + $w_new_store - $w_sale, 0);
             $e_store = max($data['e'][$ymd] + $e_new_store - $e_sale, 0);
             $data['w'][$current_date] = $w_store;
@@ -73,7 +89,11 @@ class StoreModel extends Model
             $e_last_date = end($e_date_list);
 
             // 判断是否已没货和卖完
-            if ($w_store == 0 && $e_store == 0 && $current_date >= date('Ymd', strtotime($w_last_date)) && $current_date >= date('Ymd', strtotime($e_last_date))) {
+            if ($w_store == 0
+                && $e_store == 0
+                && $current_date >= date('Ymd', strtotime($w_last_date) + 24 * 60 * 60 * Config::get('W_TRANSPORT_DAY'))
+                && $current_date >= date('Ymd', strtotime($e_last_date) + 24 * 60 * 60 * Config::get('E_TRANSPORT_DAY'))
+            ) {
                 return $data;
             } else {
                 return self::getStoreData($formatPostData, $data);

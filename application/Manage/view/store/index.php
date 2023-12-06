@@ -40,7 +40,6 @@
                     <col>
                     <col>
                     <col>
-                    <col>
                     <col width="150">
                 </colgroup>
                 <thead>
@@ -51,7 +50,6 @@
                     <th class="tc">产品名称</th>
                     <th class="tc">产品SKU</th>
                     <th class="tc">查询日期</th>
-                    <th class="tc">基础库存</th>
                     <th class="tc">操作</th>
                 </tr>
                 </thead>
@@ -66,7 +64,6 @@
                     <td class="tc">{$v.product_name}</td>
                     <td class="tc">{$v.product_sku}</td>
                     <td class="tc">{$v.query_date}</td>
-                    <td class="tc">{$v.basic_store}</td>
                     <td class="tc">
                         <a href="{:url('info', ['id' => $v.id])}" class="layui-btn layui-btn-sm">详情</a>
                         <button data-id="{$v.id}" class="layui-btn layui-btn-sm layui-btn-danger ml0" lay-submit lay-filter="Detele">删除</button>

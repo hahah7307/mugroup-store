@@ -20,7 +20,7 @@
             <div class="layui-inline layui-col-md3">
                 <label class="layui-form-label">查询日期</label>
                 <div class="layui-input-inline">
-                    <input type="text" autocomplete="off" class="layui-input datetime w300" name="query_date" value="{:date('Y-m-d', strtotime($info['query_date']))}">
+                    <input type="text" autocomplete="off" class="layui-input datetime w300" name="query_date" value="{$query_date}">
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
         {if condition="$id eq 0"}
         <div class="layui-form-item" id="sale-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">销量预估</label>
+                <label class="layui-form-label">销量预估<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input" name="month[]" placeholder="月份">
                 </div>
@@ -59,7 +59,7 @@
         {if condition="$i eq 0"}
         <div class="layui-form-item" id="sale-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">销量预估</label>
+                <label class="layui-form-label">销量预估<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input" name="month[]" placeholder="月份" value="{$key}">
                 </div>
@@ -102,7 +102,7 @@
         {if condition="$id eq 0"}
         <div class="layui-form-item" id="w-deliver-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">发货详情</label>
+                <label class="layui-form-label">发货详情<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input datetime" name="w_deliver_date[]" placeholder="日期">
                 </div>
@@ -120,7 +120,7 @@
         {if condition="$j eq 0"}
         <div class="layui-form-item" id="w-deliver-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">发货详情</label>
+                <label class="layui-form-label">发货详情<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input datetime" name="w_deliver_date[]" placeholder="日期" value="{$jk}">
                 </div>
@@ -163,7 +163,7 @@
         {if condition="$id eq 0"}
         <div class="layui-form-item" id="e-deliver-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">发货详情</label>
+                <label class="layui-form-label">发货详情<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input datetime" name="e_deliver_date[]" placeholder="日期">
                 </div>
@@ -181,7 +181,7 @@
         {if condition="$k eq 0"}
         <div class="layui-form-item" id="e-deliver-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">发货详情</label>
+                <label class="layui-form-label">发货详情<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input datetime" name="e_deliver_date[]" placeholder="日期" value="{$kk}">
                 </div>
@@ -214,7 +214,8 @@
         {/if}
         <div class="layui-form-item tl" id="btn-submit">
             <div class="layui-input-block">
-                <button class="layui-btn w100 button" lay-submit lay-filter="formCoding">提交</button>
+                <button class="layui-btn w200 button" lay-submit lay-filter="formCoding">提交</button>
+                <a href="{:url('add')}" class="layui-btn layui-btn-normal w200">重置</a>
             </div>
         </div>
     </div>
