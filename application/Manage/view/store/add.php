@@ -10,6 +10,7 @@
     .deliver_num {width: 100px!important;}
     .layui-table {width: 50%; display: inline}
     .select {margin-left: 0!important;}
+    .warm-tips {display: inline-block; font-size: 14px; position: relative; top: 2px; left: 5px; color: #ce0000}
 </style>
 <div class="layui-body">
 <div class="right">
@@ -55,7 +56,7 @@
         {if condition="$id eq 0"}
         <div class="layui-form-item" id="sale-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">日销量预估<span class="red">*</span></label>
+                <label class="layui-form-label"><b>日</b>销量预估<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input" name="month[]" placeholder="年月(如:202401)">
                 </div>
@@ -73,7 +74,7 @@
         {if condition="$i eq 0"}
         <div class="layui-form-item" id="sale-item">
             <div class="layui-inline layui-col-md3">
-                <label class="layui-form-label">日销量预估<span class="red">*</span></label>
+                <label class="layui-form-label"><b>日</b>销量预估<span class="red">*</span></label>
                 <div class="layui-input-inline">
                     <input type="text" class="layui-input" name="month[]" placeholder="月份" value="{$key}">
                 </div>
@@ -127,6 +128,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="wDeliverAdd">添加</button>
+            <div class="warm-tips">（*实际到港日期 = 预计到港日期 + 10天。实际到港日期 = 开船日期 + 26天）</div>
         </div>
         {else /}
         <?php $j = 0; ?>
@@ -145,6 +147,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="wDeliverAdd">添加</button>
+            <div class="warm-tips">（*实际到港日期 = 预计到港日期 + 10天。实际到港日期 = 开船日期 + 26天）</div>
         </div>
         {else /}
         <div class="layui-form-item" id="w-deliver-item">
@@ -188,6 +191,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="eDeliverAdd">添加</button>
+            <div class="warm-tips">（*实际到港日期 = 预计到港日期 + 10天。实际到港日期 = 开船日期 + 40天）</div>
         </div>
         {else /}
         <?php $k = 0; ?>
@@ -206,6 +210,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="eDeliverAdd">添加</button>
+            <div class="warm-tips">（*实际到港日期 = 预计到港日期 + 10天。实际到港日期 = 开船日期 + 40天）</div>
         </div>
         {else /}
         <div class="layui-form-item" id="e-deliver-item">
@@ -234,7 +239,7 @@
         </div>
     </div>
     {if condition="$id neq 0"}
-    <div class="title">预算结果</div>
+    <div class="title">测算结果</div>
     <table class="layui-table">
         <colgroup>
             <col width="25%">
