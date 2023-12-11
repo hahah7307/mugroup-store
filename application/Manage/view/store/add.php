@@ -10,7 +10,7 @@
     .deliver_num {width: 100px!important;}
     .layui-table {width: 50%; display: inline}
     .select {margin-left: 0!important;}
-    .warm-tips {display: inline-block; font-size: 14px; position: relative; top: 2px; left: 5px; color: #ce0000}
+    .warm-tips {display: inline-block; font-size: 14px; position: relative; top: 8px; left: 5px; color: #ce0000}
 </style>
 <div class="layui-body">
 <div class="right">
@@ -67,6 +67,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="saleAdd">添加</button>
+            <div class="warm-tips"></div>
         </div>
         {else /}
         <?php $i = 0; ?>
@@ -85,6 +86,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="saleAdd">添加</button>
+            <div class="warm-tips"></div>
         </div>
         {else /}
         <div class="layui-form-item" id="sale-item">
@@ -100,6 +102,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button>
+            <div class="warm-tips"></div>
         </div>
         {/if}
         <?php $i++; ?>
@@ -113,13 +116,14 @@
                     <input type="text" autocomplete="off" class="layui-input w300" name="w_basic_store" value="{$info.post_data.w_info.basic_store}">
                 </div>
             </div>
+            <div class="warm-tips">（*实际上架日期 = 预计到港日期 + 10天。预计到港日期 = 开船日期 + 26天）</div>
         </div>
         {if condition="$id eq 0"}
         <div class="layui-form-item" id="w-deliver-item">
             <div class="layui-inline layui-col-md3">
                 <label class="layui-form-label">在途详情(预计到港日期)<span class="red">*</span></label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input datetime" name="w_deliver_date[]" placeholder="日期">
+                    <input type="text" class="layui-input datetime" name="w_deliver_date[]" placeholder="日期" belong="a-w">
                 </div>
             </div>
             <div class="layui-inline layui-col-md1">
@@ -128,7 +132,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="wDeliverAdd">添加</button>
-            <div class="warm-tips">（*实际到港日期 = 预计到港日期 + 10天。实际到港日期 = 开船日期 + 26天）</div>
+            <div class="warm-tips"></div>
         </div>
         {else /}
         <?php $j = 0; ?>
@@ -138,7 +142,7 @@
             <div class="layui-inline layui-col-md3">
                 <label class="layui-form-label">在途详情(预计到港日期)<span class="red">*</span></label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input datetime" name="w_deliver_date[]" placeholder="日期" value="{$jk}">
+                    <input type="text" class="layui-input datetime" name="w_deliver_date[]" placeholder="日期" value="{$jk}" belong="a-w">
                 </div>
             </div>
             <div class="layui-inline layui-col-md1">
@@ -147,14 +151,14 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="wDeliverAdd">添加</button>
-            <div class="warm-tips">（*实际到港日期 = 预计到港日期 + 10天。实际到港日期 = 开船日期 + 26天）</div>
+            <div class="warm-tips"></div>
         </div>
         {else /}
         <div class="layui-form-item" id="w-deliver-item">
             <div class="layui-inline layui-col-md3">
                 <label class="layui-form-label"></label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input datetime" name="w_deliver_date[{$j}]" placeholder="日期" value="{$jk}">
+                    <input type="text" class="layui-input datetime" name="w_deliver_date[{$j}]" placeholder="日期" value="{$jk}" belong="a-w">
                 </div>
             </div>
             <div class="layui-inline layui-col-md1">
@@ -163,6 +167,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button>
+            <div class="warm-tips"></div>
         </div>
         {/if}
         <?php $j++; ?>
@@ -176,13 +181,14 @@
                     <input type="text" autocomplete="off" class="layui-input w300" name="e_basic_store" value="{$info.post_data.e_info.basic_store}">
                 </div>
             </div>
+            <div class="warm-tips">（*实际上架日期 = 预计到港日期 + 10天。预计到港日期 = 开船日期 + 40天）</div>
         </div>
         {if condition="$id eq 0"}
         <div class="layui-form-item" id="e-deliver-item">
             <div class="layui-inline layui-col-md3">
                 <label class="layui-form-label">在途详情(预计到港日期)<span class="red">*</span></label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input datetime" name="e_deliver_date[]" placeholder="日期">
+                    <input type="text" class="layui-input datetime" name="e_deliver_date[]" placeholder="日期" belong="a-e">
                 </div>
             </div>
             <div class="layui-inline layui-col-md1">
@@ -191,7 +197,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="eDeliverAdd">添加</button>
-            <div class="warm-tips">（*实际到港日期 = 预计到港日期 + 10天。实际到港日期 = 开船日期 + 40天）</div>
+            <div class="warm-tips"></div>
         </div>
         {else /}
         <?php $k = 0; ?>
@@ -201,7 +207,7 @@
             <div class="layui-inline layui-col-md3">
                 <label class="layui-form-label">在途详情(预计到港日期)<span class="red">*</span></label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input datetime" name="e_deliver_date[]" placeholder="日期" value="{$kk}">
+                    <input type="text" class="layui-input datetime" name="e_deliver_date[]" placeholder="日期" value="{$kk}" belong="a-e">
                 </div>
             </div>
             <div class="layui-inline layui-col-md1">
@@ -210,14 +216,14 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="eDeliverAdd">添加</button>
-            <div class="warm-tips">（*实际到港日期 = 预计到港日期 + 10天。实际到港日期 = 开船日期 + 40天）</div>
+            <div class="warm-tips"></div>
         </div>
         {else /}
         <div class="layui-form-item" id="e-deliver-item">
             <div class="layui-inline layui-col-md3">
                 <label class="layui-form-label"></label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input datetime" name="e_deliver_date[{$k}]" placeholder="日期" value="{$kk}">
+                    <input type="text" class="layui-input datetime" name="e_deliver_date[{$k}]" placeholder="日期" value="{$kk}" belong="a-e">
                 </div>
             </div>
             <div class="layui-inline layui-col-md1">
@@ -226,6 +232,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button>
+            <div class="warm-tips"></div>
         </div>
         {/if}
         <?php $k++; ?>
@@ -278,6 +285,41 @@
         {/foreach}
         </tbody>
     </table>
+    <table class="layui-table">
+        <colgroup>
+            <col width="25%">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th colspan="2" class="tc">总计</th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach name="$info.store_data.sum" item="sum"}
+        <tr>
+            <td class="tc">
+                {if condition="$sum['code'] eq 2"}
+                <p class="blue">{$sum.value}</p>
+                {elseif condition="$sum['code'] eq 1"/}
+                <p class="red">{$sum.value}</p>
+                {else/}
+                <p class="green">{$sum.value}</p>
+                {/if}
+            </td>
+            <td class="tl">
+                {if condition="$sum['code'] eq 2"}
+                <p class="blue">总库存可销售日期高于90天</p>
+                {elseif condition="$sum['code'] eq 1"/}
+                <p class="red">总库存可销售日期低于45天</p>
+                {else/}
+                <p class="green">正常</p>
+                {/if}
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
     {/if}
 </div>
 </div>
@@ -297,7 +339,35 @@
             lay('.datetime').each(function() {
                 laydate.render({
                     elem : this,
-                    trigger : 'click'
+                    trigger : 'click',
+                    done: function(value, date, endDate){
+                        let dateObj = new Date(value);
+                        if (this.elem[0].getAttribute('belong') === "a-w") {
+                            const transDate = 45; //
+                            const orderDate = 60;
+
+                            let timestamp = dateObj.getTime() - transDate * 24 * 60 * 60 * 1000;
+                            let newDateObj = new Date(timestamp);
+                            let transDateFormat = newDateObj.getFullYear() + "-" + (newDateObj.getMonth() + 1) + "-" + newDateObj.getDate();
+                            let oTimestamp = dateObj.getTime() - orderDate * 24 * 60 * 60 * 1000;
+                            let oNewDateObj = new Date(oTimestamp);
+                            let orderDateFormat = oNewDateObj.getFullYear() + "-" + (oNewDateObj.getMonth() + 1) + "-" + oNewDateObj.getDate();
+                            this.elem[0].parentNode.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.innerText = "出运日期" + transDateFormat + "，下单日期" + orderDateFormat;
+                        } else if (this.elem[0].getAttribute('belong') === "a-e") {
+                            const transDate = 60; //
+                            const orderDate = 75;
+
+                            let timestamp = dateObj.getTime() - transDate * 24 * 60 * 60 * 1000;
+                            let newDateObj = new Date(timestamp);
+                            let transDateFormat = newDateObj.getFullYear() + "-" + (newDateObj.getMonth() + 1) + "-" + newDateObj.getDate();
+                            let oTimestamp = dateObj.getTime() - orderDate * 24 * 60 * 60 * 1000;
+                            let oNewDateObj = new Date(oTimestamp);
+                            let orderDateFormat = oNewDateObj.getFullYear() + "-" + (oNewDateObj.getMonth() + 1) + "-" + oNewDateObj.getDate();
+                            this.elem[0].parentNode.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.innerText = "出运日期" + transDateFormat + "，下单日期" + orderDateFormat;
+                        } else {
+                            return false;
+                        }
+                    }
                 });
             });
         }
@@ -309,7 +379,7 @@
         form.on('submit(saleAdd)', function(data) {
             saleIndex ++;
             var new_attr =
-                '<div class="layui-form-item" id="sale-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input" name="month[' + saleIndex + ']" placeholder="月份"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w84" name="sale[' + saleIndex + ']" placeholder="销量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button></div>';
+                '<div class="layui-form-item" id="sale-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input" name="month[' + saleIndex + ']" placeholder="月份"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w84" name="sale[' + saleIndex + ']" placeholder="销量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button><div class="warm-tips"></div></div>';
             $("#america-west").before(new_attr);
             form.render();
             timeAdd();
@@ -319,7 +389,7 @@
         let wDeliverIndex = {$info.post_data.w_info.deliver|count} ? {$info.post_data.w_info.deliver|count} - 1 : 0;
         form.on('submit(wDeliverAdd)', function(data) {
             wDeliverIndex ++;
-            var new_attr = '<div class="layui-form-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input datetime" name="w_deliver_date[' + wDeliverIndex + ']" placeholder="日期"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w84" name="w_deliver_num[' + wDeliverIndex + ']" placeholder="发货量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button></div></div>';
+            var new_attr = '<div class="layui-form-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input datetime" name="w_deliver_date[' + wDeliverIndex + ']" placeholder="日期" belong="a-w"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w84" name="w_deliver_num[' + wDeliverIndex + ']" placeholder="发货量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button><div class="warm-tips"></div></div></div>';
             $("#america-east").before(new_attr);
             form.render();
             timeAdd();
@@ -329,7 +399,7 @@
         let eDeliverIndex = {$info.post_data.e_info.deliver|count} ? {$info.post_data.e_info.deliver|count} - 1 : 0;
         form.on('submit(eDeliverAdd)', function(data) {
             eDeliverIndex ++;
-            var new_attr = '<div class="layui-form-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input datetime" name="e_deliver_date[' + eDeliverIndex + ']" placeholder="日期"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w84" name="e_deliver_num[' + eDeliverIndex + ']" placeholder="发货量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button></div></div>';
+            var new_attr = '<div class="layui-form-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input datetime" name="e_deliver_date[' + eDeliverIndex + ']" placeholder="日期" belong="a-e"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w84" name="e_deliver_num[' + eDeliverIndex + ']" placeholder="发货量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button><div class="warm-tips"></div></div></div>';
             $("#btn-submit").before(new_attr);
             form.render();
             timeAdd();

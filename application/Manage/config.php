@@ -56,4 +56,6 @@ return [
     // 库存配置
     'W_TRANSPORT_DAY'   =>  10,                                     // 美西运送日期
     'E_TRANSPORT_DAY'   =>  10,                                     // 美东运送日期
+    'MAX_DAY_SALE_TIMES'    =>  90,                                 // 最大日销量倍数
+    'MIN_DAY_SALE_TIMES'    =>  45,                                 // 最小日销量倍数
 ];

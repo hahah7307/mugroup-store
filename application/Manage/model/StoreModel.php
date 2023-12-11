@@ -82,6 +82,14 @@ class StoreModel extends Model
             $e_store = max($data['e'][$ymd] + $e_new_store - $e_sale, 0);
             $data['w'][$current_date] = $w_store;
             $data['e'][$current_date] = $e_store;
+            $sum = $w_store + $e_store;
+            if ($sum > $formatPostData['sale_info'][$ym] * Config::get('MAX_DAY_SALE_TIMES')) {
+                $data['sum'][$current_date] = ['code' => 2, 'value' => $sum];
+            } elseif ($sum < $formatPostData['sale_info'][$ym] * Config::get('MIN_DAY_SALE_TIMES')) {
+                $data['sum'][$current_date] = ['code' => 1, 'value' => $sum];
+            } else {
+                $data['sum'][$current_date] = ['code' => 0, 'value' => $sum];
+            }
 
             // 获取两个仓库送货的最后一天
             $w_date_list = array_keys($formatPostData['w_info']['deliver']);
@@ -105,22 +113,16 @@ class StoreModel extends Model
                 'w' => [$ymd => intval($formatPostData['w_info']['basic_store'])],
                 'e' => [$ymd => intval($formatPostData['e_info']['basic_store'])]
             ];
+            $ym = date('Ym', strtotime($formatPostData['query_date']));
+            $sum = intval($formatPostData['w_info']['basic_store']) + intval($formatPostData['e_info']['basic_store']);
+            if ($sum > $formatPostData['sale_info'][$ym] * Config::get('MAX_DAY_SALE_TIMES')) {
+                $data['sum'][$ymd] = ['code' => 2, 'value' => $sum];
+            } elseif ($sum < $formatPostData['sale_info'][$ym] * Config::get('MIN_DAY_SALE_TIMES')) {
+                $data['sum'][$ymd] = ['code' => 1, 'value' => $sum];
+            } else {
+                $data['sum'][$ymd] = ['code' => 0, 'value' => $sum];
+            }
 
-//            $ym = date('Ym', strtotime($ymd));
-//            $sale = $formatPostData['sale_info'][$ym];
-//            var_dump($sale);
-//            $w_sale = floor($sale * Config::get('W_SALE_PROPORTION'));
-//            var_dump($w_sale);
-//            $e_sale = $sale - $w_sale;
-//
-//            $current_date_format = date('Y-m-d', strtotime($ymd));
-//            $w_new_store = isset($formatPostData['w_info']['deliver'][$current_date_format]) ? $formatPostData['w_info']['deliver'][$current_date_format] : 0;
-//            $e_new_store = isset($formatPostData['e_info']['deliver'][$current_date_format]) ? $formatPostData['e_info']['deliver'][$current_date_format] : 0;
-//
-//            $data = [
-//                'w' => [$ymd => max($formatPostData['w_info']['basic_store'] + $w_new_store - $w_sale, 0)],
-//                'e' => [$ymd => max($formatPostData['e_info']['basic_store'] + $e_new_store - $e_sale, 0)]
-//            ];
             return self::getStoreData($formatPostData, $data);
         }
     }
