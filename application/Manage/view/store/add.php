@@ -151,7 +151,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="wDeliverAdd">添加</button>
-            <div class="warm-tips"></div>
+            <div class="warm-tips">{$info['post_data']['w_info']['tip'][$j]}</div>
         </div>
         {else /}
         <div class="layui-form-item" id="w-deliver-item">
@@ -167,7 +167,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button>
-            <div class="warm-tips"></div>
+            <div class="warm-tips">{$info['post_data']['w_info']['tip'][$j]}</div>
         </div>
         {/if}
         <?php $j++; ?>
@@ -216,7 +216,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="eDeliverAdd">添加</button>
-            <div class="warm-tips"></div>
+            <div class="warm-tips">{$info['post_data']['e_info']['tip'][$k]}</div>
         </div>
         {else /}
         <div class="layui-form-item" id="e-deliver-item">
@@ -232,7 +232,7 @@
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button>
-            <div class="warm-tips"></div>
+            <div class="warm-tips">{$info['post_data']['e_info']['tip'][$k]}</div>
         </div>
         {/if}
         <?php $k++; ?>
@@ -292,7 +292,7 @@
         </colgroup>
         <thead>
         <tr>
-            <th colspan="2" class="tc">总计</th>
+            <th colspan="2" class="tc">总库存预警</th>
         </tr>
         </thead>
         <tbody>
@@ -343,8 +343,8 @@
                     done: function(value, date, endDate){
                         let dateObj = new Date(value);
                         if (this.elem[0].getAttribute('belong') === "a-w") {
-                            const transDate = 45; //
-                            const orderDate = 60;
+                            const transDate = {$Think.config.AMERICAN_WEST_TRANSFER_DAY} //
+                            const orderDate = {$Think.config.AMERICAN_WEST_ORDER_DAY};
 
                             let timestamp = dateObj.getTime() - transDate * 24 * 60 * 60 * 1000;
                             let newDateObj = new Date(timestamp);
@@ -354,8 +354,8 @@
                             let orderDateFormat = oNewDateObj.getFullYear() + "-" + (oNewDateObj.getMonth() + 1) + "-" + oNewDateObj.getDate();
                             this.elem[0].parentNode.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.innerText = "出运日期" + transDateFormat + "，下单日期" + orderDateFormat;
                         } else if (this.elem[0].getAttribute('belong') === "a-e") {
-                            const transDate = 60; //
-                            const orderDate = 75;
+                            const transDate = {$Think.config.AMERICAN_EAST_TRANSFER_DAY}; //
+                            const orderDate = {$Think.config.AMERICAN_EAST_ORDER_DAY};
 
                             let timestamp = dateObj.getTime() - transDate * 24 * 60 * 60 * 1000;
                             let newDateObj = new Date(timestamp);
@@ -373,6 +373,13 @@
         }
 
         timeAdd();
+
+        $('.datetime').on('click', function(){
+            // 显示日期选择器
+            laydate.render({
+                elem: '.datetime'
+            });
+        });
 
         // 添加属性
         let saleIndex = {$info.sale_data|count} ? {$info.sale_data|count} - 1 : 0;

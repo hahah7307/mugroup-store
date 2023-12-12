@@ -54,8 +54,13 @@ return [
     'TINYMCE_TOOLBAR'   =>  'removeformat code undo redo | forecolor backcolor bold italic underline strikethrough link table imagetools image media anchor | alignleft aligncenter alignright alignjustify | styleselect | fontselect | fontsizeselect | lineheight | bullist numlist | blockquote subscript superscript removeformat | charmap emoticons hr pagebreak insertdatetime print preview',
 
     // 库存配置
-    'W_TRANSPORT_DAY'   =>  10,                                     // 美西运送日期
-    'E_TRANSPORT_DAY'   =>  10,                                     // 美东运送日期
-    'MAX_DAY_SALE_TIMES'    =>  90,                                 // 最大日销量倍数
-    'MIN_DAY_SALE_TIMES'    =>  45,                                 // 最小日销量倍数
+    'W_TRANSPORT_DAY'               =>  10,                         // 美西运送日期
+    'E_TRANSPORT_DAY'               =>  10,                         // 美东运送日期
+    'MAX_DAY_SALE_TIMES'            =>  90,                         // 最大日销量倍数
+    'MIN_DAY_SALE_TIMES'            =>  45,                         // 最小日销量倍数
+
+    'AMERICAN_WEST_TRANSFER_DAY'    =>  31,                         // 美西出运至到港所需日期
+    'AMERICAN_WEST_ORDER_DAY'       =>  91,                         // 美西下单至到港所需日期
+    'AMERICAN_EAST_TRANSFER_DAY'    =>  45,                         // 美东出运至到港所需日期
+    'AMERICAN_EAST_ORDER_DAY'       =>  105,                        // 美东下单至到港所需日期
 ];

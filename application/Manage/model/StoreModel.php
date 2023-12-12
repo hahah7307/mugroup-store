@@ -126,4 +126,35 @@ class StoreModel extends Model
             return self::getStoreData($formatPostData, $data);
         }
     }
+
+    static public function getDeliverTip($data)
+    {
+        if ($data) {
+            foreach ($data['w_info']['deliver'] as $date => $value) {
+                if ($date) {
+                    $date1 = date('Y-m-d', strtotime($date) - Config::get('AMERICAN_WEST_TRANSFER_DAY') * 24 * 60 * 60);
+                    $date2 = date('Y-m-d', strtotime($date) - Config::get('AMERICAN_WEST_ORDER_DAY') * 24 * 60 * 60);
+                    $data['w_info']['tip'][] = "出运日期" . $date1 . "，下单日期" . $date2;
+                    unset($date1);
+                    unset($date2);
+                } else {
+                    $data['w_info']['tip'][] = "";
+                }
+            }
+            foreach ($data['e_info']['deliver'] as $date => $value) {
+                if ($date) {
+                    $date1 = date('Y-m-d', strtotime($date) - Config::get('AMERICAN_EAST_TRANSFER_DAY') * 24 * 60 * 60);
+                    $date2 = date('Y-m-d', strtotime($date) - Config::get('AMERICAN_EAST_ORDER_DAY') * 24 * 60 * 60);
+                    $data['e_info']['tip'][] = "出运日期" . $date1 . "，下单日期" . $date2;
+                    unset($date1);
+                    unset($date2);
+                } else {
+                    $data['e_info']['tip'][] = "";
+                }
+            }
+            return $data;
+        } else {
+            return false;
+        }
+    }
 }

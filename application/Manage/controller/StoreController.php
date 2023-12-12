@@ -49,6 +49,7 @@ class StoreController extends BaseController
         if ($this->request->isPost()) {
             $post = $this->request->post();
             $post = StoreModel::formatPostData($post);
+            $post = StoreModel::getDeliverTip($post);
             $data = StoreModel::getStoreData($post);
             $storeData = [
                 'query_date'            =>  $post['query_date'],
