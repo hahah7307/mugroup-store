@@ -52,6 +52,7 @@ class StoreModel extends Model
             // 获取上一天的时间
             $array = array_keys($data['w']);
             $ymd = end($array);
+            unset($array);
 
             // 当日时间
             $current_date = date('Ymd', strtotime($ymd) + 24 * 60 * 60);
@@ -59,6 +60,8 @@ class StoreModel extends Model
             // 销量
             $ym = date('Ym', strtotime($current_date));
             $sale = $formatPostData['sale_info'][$ym];
+            if ($sale == null)
+            return $data;
 
             // 获取当天到货数
             $w_deliver_date_format = date('Y-m-d', strtotime($current_date) - 24 * 60 * 60 * Config::get('W_TRANSPORT_DAY'));
