@@ -25,6 +25,11 @@ function encPass($pass, $salt)
 	}
 }
 
+function encToken($username)
+{
+    return md5(md5($username . time()));
+}
+
 // 图片路径转换成网站相对路径
 function imageurl_to_path($url)
 {
