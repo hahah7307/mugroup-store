@@ -29,6 +29,9 @@ class StoreController extends BaseController
             $where['title'] = ['like', '%' . $keyword . '%'];
         }
 
+        // 临时不显示
+        $where['created_at'] = ['elt', '2023-12-00 00:00:00'];
+
         // 核价列表
         $list = new StoreModel;
         $list = StoreModel::where($where)->order('id '.$sort)->paginate(Config::get('PAGE_NUM'));

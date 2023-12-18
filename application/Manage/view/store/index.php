@@ -33,7 +33,7 @@
 
         <div class="layui-form">
             <a class="layui-btn" href="{:url('add')}">添加</a>
-            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="Sort">排序</button>
+<!--            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="Sort">排序</button>-->
             <table class="layui-table">
                 <colgroup>
                     <col width="50">
