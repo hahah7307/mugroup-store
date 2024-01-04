@@ -63,7 +63,7 @@
             </div>
             <div class="layui-inline layui-col-md1">
                 <div class="layui-input-inline deliver_num">
-                    <input type="text" class="layui-input w84" name="sale[]" placeholder="销量" onkeyup="value=value.replace(/^\D*(\d*).*$/g, '$1')">
+                    <input type="text" class="layui-input w84" name="sale[]" placeholder="销量">
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="saleAdd">添加</button>
@@ -82,7 +82,7 @@
             </div>
             <div class="layui-inline layui-col-md1">
                 <div class="layui-input-inline deliver_num">
-                    <input type="text" class="layui-input w84" name="sale[]" placeholder="销量" value="{$sale_data}" onkeyup="value=value.replace(/^\D*(\d*).*$/g, '$1')">
+                    <input type="text" class="layui-input w84" name="sale[]" placeholder="销量" value="{$sale_data}">
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm btn-lc" lay-submit lay-filter="saleAdd">添加</button>
@@ -98,7 +98,7 @@
             </div>
             <div class="layui-inline layui-col-md1">
                 <div class="layui-input-inline deliver_num">
-                    <input type="text" class="layui-input w84" name="sale[{$i}]" placeholder="销量" value="{$sale_data}" onkeyup="value=value.replace(/^\D*(\d*).*$/g, '$1')">
+                    <input type="text" class="layui-input w84" name="sale[{$i}]" placeholder="销量" value="{$sale_data}">
                 </div>
             </div>
             <button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button>
@@ -261,7 +261,7 @@
         {foreach name="$info.store_data.w" item="w_store"}
         <tr>
             <td class="tc">{:date('Y-m-d', strtotime($key))}</td>
-            <td class="tc">{$w_store}</td>
+            <td class="tc">{$w_store|round=###,0}</td>
         </tr>
         {/foreach}
         </tbody>
@@ -280,7 +280,7 @@
         {foreach name="$info.store_data.e" item="e_store"}
         <tr>
             <td class="tc">{:date('Y-m-d', strtotime($key))}</td>
-            <td class="tc">{$e_store}</td>
+            <td class="tc">{$e_store|round=###,0}</td>
         </tr>
         {/foreach}
         </tbody>
@@ -300,11 +300,11 @@
         <tr>
             <td class="tc">
                 {if condition="$sum['code'] eq 2"}
-                <p class="blue">{$sum.value}</p>
+                <p class="blue">{$sum.value|round=###, 0}</p>
                 {elseif condition="$sum['code'] eq 1"/}
-                <p class="red">{$sum.value}</p>
+                <p class="red">{$sum.value|round=###, 0}</p>
                 {else/}
-                <p class="green">{$sum.value}</p>
+                <p class="green">{$sum.value|round=###, 0}</p>
                 {/if}
             </td>
             <td class="tl">
@@ -386,7 +386,7 @@
         form.on('submit(saleAdd)', function(data) {
             saleIndex ++;
             var new_attr =
-                '<div class="layui-form-item" id="sale-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input" name="month[' + saleIndex + ']" placeholder="月份"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w84" name="sale[' + saleIndex + ']" placeholder="销量" onkeyup="value=value.replace(/^\\D*(\\d*).*$/g, ' + "'$1'" + ')"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button><div class="warm-tips"></div></div>';
+                '<div class="layui-form-item" id="sale-item"><div class="layui-inline layui-col-md3"><label class="layui-form-label"></label><div class="layui-input-inline"><input type="text" class="layui-input" name="month[' + saleIndex + ']" placeholder="月份"></div></div><div class="layui-inline layui-col-md1"><div class="layui-input-inline deliver_num"><input type="text" class="layui-input w84" name="sale[' + saleIndex + ']" placeholder="销量"></div></div><button class="layui-btn layui-btn-sm layui-btn-danger btn-lc" lay-submit lay-filter="attrDel">删除</button><div class="warm-tips"></div></div>';
             $("#america-west").before(new_attr);
             form.render();
             timeAdd();
