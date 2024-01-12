@@ -61,7 +61,8 @@ class StoreController extends BaseController
                 'w_sale_proportion'     =>  $post['w_sale_proportion'],
                 'sale_data'             =>  json_encode($post['sale_info']),
                 'post_data'             =>  json_encode($post),
-                'store_data'            =>  json_encode($data)
+                'store_data'            =>  json_encode($data),
+                'created_admin_id'      =>  \session(Config::get('USER_LOGIN_FLAG'))
             ];
             $model = new StoreModel();
             if ($model->allowField(true)->save($storeData)) {
